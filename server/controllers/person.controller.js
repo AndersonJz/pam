@@ -4,10 +4,7 @@ const personCtrl = {};
 
 personCtrl.getPersons = async(req, res) => {
     const persons = await Person.find()
-    res.json({
-        ok: true,
-        persons
-    });
+    res.json(persons);
 
 };
 personCtrl.getPerson = async(req, res) => {
