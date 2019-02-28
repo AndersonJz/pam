@@ -4,6 +4,7 @@ const router = express.Router();
 const personCtrl = require('../controllers/person.controller');
 
 router.get('/', personCtrl.getPersons);
+y
 router.post('/', personCtrl.createPerson);
 router.get('/:id', personCtrl.getPerson)
 router.put('/:id', personCtrl.editPerson)
