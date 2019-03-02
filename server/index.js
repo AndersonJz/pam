@@ -2,6 +2,8 @@ const express = require('express');
 const morgan = require('morgan');
 const cors = require('cors');
 const app = express();
+const http = require('http');
+const path = require('path');
 
 const { mongoose } = require('./database')
 
@@ -12,6 +14,11 @@ app.set('port', process.env.PORT || 3000);
 app.use(morgan('dev'));
 app.use(express.json());
 app.use(cors({ origin: '*' }));
+app.use(express.static(__dirname + '/dist/Front'));
+
+app.get('/*', (req, res) => res.sendFile(path.join(__dirname)));
+
+const server = http.createServer(app);
 
 app.use(function(req, res, next) {
 
